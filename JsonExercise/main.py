@@ -7,7 +7,7 @@ from array import array
 TimeForNow = int(time.time())
 
 # read json file and store the information into data value
-with open('data.json', 'r') as f:
+with open('res/data.json', 'r') as f:
     data = json.load(f)
 print("original json：")
 print(data)
@@ -50,8 +50,10 @@ data2 = {
 }
 
 # write result data to the json
-with open('data2.json', 'w') as f:
-    json.dump(data2, f)
+data2 = json.dumps(data2, indent=1)
+with open("data2.json", 'w', newline='\n') as f:
+ 	f.write(data2)
+
 
 
 print("Result data： ")
