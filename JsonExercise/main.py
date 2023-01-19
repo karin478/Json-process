@@ -16,13 +16,13 @@ def read_json():
 # each time of delete would use counter and avoid out of index
 def time_search():
     # get time
-    TimeForNow = int(time.time())
-    DeletCounter = 0
+    time_now = int(time.time())
+    delete_counter = 0
     length = len(data["Devices"])
     for i in range(length):
-        if int(data["Devices"][i-DeletCounter]["timestamp"])<TimeForNow:
-            del data["Devices"][i-DeletCounter]
-            DeletCounter += 1
+        if int(data["Devices"][i-delete_counter]["timestamp"])<time_now:
+            del data["Devices"][i-delete_counter]
+            delete_counter += 1
 
 
 # encode and decode value from str to integer base on base64
@@ -48,6 +48,7 @@ def get_uuid():
         UUIDlist.append(UUIDRes)
     print(UUIDlist)
 
+
 # print result to the json file
 def write_outcome():
     global data2
@@ -55,12 +56,10 @@ def write_outcome():
         'ValueTotal': TotalValue,
         'UUIDS': UUIDlist
     }
-
     # write result data to the json
     data2 = json.dumps(data2, indent=1)
     with open("res/data2.json", 'w', newline='\n') as f:
         f.write(data2)
-
 
 
 read_json()
