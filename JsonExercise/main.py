@@ -51,7 +51,7 @@ data2 = {
 
 # write result data to the json
 data2 = json.dumps(data2, indent=1)
-with open("data2.json", 'w', newline='\n') as f:
+with open("res/data2.json", 'w', newline='\n') as f:
  	f.write(data2)
 
 
